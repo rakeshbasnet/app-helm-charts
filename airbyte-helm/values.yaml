@@ -1,0 +1,2 @@
+airbyte:
+  replicaCount:1

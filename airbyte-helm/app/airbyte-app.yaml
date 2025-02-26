@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: airbyte
+  namespace: argocd
+spec:
+  destination:
+    namespace: airbyte
+    name: default
+  project: default
+  source:
+    path: airbyte-helm
+    repoURL: https://github.com/rakeshbasnet/app-helm-charts.git
+    targetRevision: HEAD
+    helm:
+      # https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#values-files
+      valueFiles:
+      - values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
