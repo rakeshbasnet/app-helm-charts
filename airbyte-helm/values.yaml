@@ -1,2 +1,2 @@
 airbyte:
-  replicaCount:1
+  webapp.replicaCount: 2
